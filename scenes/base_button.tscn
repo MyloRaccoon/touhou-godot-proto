@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1sbexclyd2y0"]
+
+[ext_resource type="Script" path="res://scripts/base_button.gd" id="1_uxbd1"]
+
+[node name="baseButton" type="Sprite2D"]
+script = ExtResource("1_uxbd1")

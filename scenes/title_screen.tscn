@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://e00ec4ccgd48"]
+
+[ext_resource type="PackedScene" uid="uid://b7klg35yxpsla" path="res://scenes/button_set.tscn" id="1_a7gm0"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_wukb5"]
+[ext_resource type="PackedScene" uid="uid://1sbexclyd2y0" path="res://scenes/base_button.tscn" id="2_ucmnp"]
+[ext_resource type="Texture2D" uid="uid://b2t7tujnnh47k" path="res://assets/PC Computer - Touhou Fuujinroku Mountain of Faith - Menu and Other Screens.png" id="3_niqs5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic7fd"]
+atlas = ExtResource("3_niqs5")
+region = Rect2(689, 44, 155, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxn5r"]
+atlas = ExtResource("3_niqs5")
+region = Rect2(689, 304, 68, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eut46"]
+font_size = 50
+
+[node name="titleScreen" type="Node2D"]
+script = ExtResource("1_wukb5")
+
+[node name="buttonSet" parent="." instance=ExtResource("1_a7gm0")]
+
+[node name="btn_play" parent="buttonSet" instance=ExtResource("2_ucmnp")]
+position = Vector2(640, 384)
+texture = SubResource("AtlasTexture_ic7fd")
+id = "play"
+
+[node name="btn_quit" parent="buttonSet" instance=ExtResource("2_ucmnp")]
+position = Vector2(632, 448)
+texture = SubResource("AtlasTexture_uxn5r")
+id = "quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 136.0
+offset_right = 620.0
+offset_bottom = 205.0
+text = "TOUHOU BOOT LEG"
+label_settings = SubResource("LabelSettings_eut46")
