@@ -261,7 +261,7 @@ wait_tween_momentum = 0
 wait_tween_length = 0.0
 wait_tween_time = 0.0
 
-[node name="Marisa" type="CharacterBody2D"]
+[node name="Marisa" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_n4uv3")
 max_speed = 300
 min_speed = 100

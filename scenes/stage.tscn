@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3mnriwui3awh"]
+[gd_scene load_steps=17 format=3 uid="uid://c3mnriwui3awh"]
 
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_oj3u4"]
-[ext_resource type="PackedScene" uid="uid://be2s0f83o2gr5" path="res://scenes/marisa.tscn" id="3_2ysol"]
+[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="4_60hl8"]
+[ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="4_hye48"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="4_n37me"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_hoh1v"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="6_byvsp"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="8_adep8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
 atlas = ExtResource("1_55xh5")
@@ -10,6 +15,118 @@ region = Rect2(0, 511, 515, 513)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gref"]
 size = Vector2(640, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_g0hdt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, 64, 0, 0, 0, 0, 448, 64)
+}
+point_count = 2
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mmkua"]
+resource_name = "PatternCircle"
+script = ExtResource("8_adep8")
+radius = 0
+angle_total = 6.28319
+angle_decal = 0.0
+symmetric = false
+center = 0
+symmetry_type = 0
+bullet = "e_bullet"
+nbr = 10
+iterations = 2
+pattern_angle = 0.0
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
+forced_angle = 0.0
+forced_target = NodePath("")
+forced_lookat_mouse = false
+forced_pattern_lookat = true
+cooldown_stasis = false
+cooldown_spawn = 0.2
+cooldown_shoot = 0.0
+cooldown_next_spawn = 0.0
+cooldown_next_shoot = 0.0
+wait_tween_momentum = 0
+wait_tween_length = 0.0
+wait_tween_time = 0.0
+
+[sub_resource type="Curve2D" id="Curve2D_4p812"]
+
+[sub_resource type="Curve" id="Curve_hrl2d"]
+
+[sub_resource type="Curve" id="Curve_ttg23"]
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_x57jo"]
+script = ExtResource("6_byvsp")
+anim_more = Array[ExtResource("5_hoh1v")]([])
+damage = 1.0
+speed = 100.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 10.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_hrl2d")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 1.0
+homing_time_start = 0.5
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_ttg23")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_oj3u4")
@@ -34,8 +151,11 @@ polygon = PackedVector2Array(0, 0, 512, 0, 512, 576, 576, 576, 576, -64, 0, -64)
 [node name="projoWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="projoWall"]
-position = Vector2(256, -32)
+position = Vector2(256, -64)
 shape = SubResource("RectangleShape2D_4gref")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="projoWall"]
+polygon = PackedVector2Array(-64, -64, -64, 576, 576, 576, 576, -64, 640, -64, 640, 640, -128, 640, -128, -64)
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -66,5 +186,26 @@ offset_right = 623.0
 offset_bottom = 151.0
 text = "Power : 1/4"
 
-[node name="Marisa" parent="." instance=ExtResource("3_2ysol")]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_g0hdt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(64, 64)
+rotates = false
+loop = false
+
+[node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource("4_60hl8")]
+auto_start = true
+speed = 3.0
+nbr = 10
+pattern = SubResource("NavigationPolygon_mmkua")
+custom_pos = Array[float]([0.234, 0.672])
+
+[node name="BulletPattern" type="Path2D" parent="Path2D/PathFollow2D/Enemy"]
+curve = SubResource("Curve2D_4p812")
+script = ExtResource("4_n37me")
+id = "e_bullet"
+props = SubResource("PackedDataContainer_x57jo")
+
+[node name="Reimu" parent="." instance=ExtResource("4_hye48")]
 position = Vector2(256, 448)
