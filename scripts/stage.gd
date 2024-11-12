@@ -7,6 +7,9 @@ extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	lbl_power.text = "Power : " + str(player.power)
+	if player.is_power_max():
+		lbl_power.text = "Power : MAX"
+	else:
+		lbl_power.text = "Power : " + str(player.power) + " /4.0"
 	lbl_score.text = "Score : " + str(player.score)
 	lbl_player.text = "Player : " + str(player.lives)

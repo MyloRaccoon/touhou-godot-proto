@@ -15,8 +15,8 @@ var can_shoot = true
 
 func set_pattern():
 	return
-	Spawning.create_pool("basicBullet", "0", 100)
-	Spawning.create_pool("modBullet", "0", 100)
+	#Spawning.create_pool("basicBullet", "playerBullet", 100)
+	#Spawning.create_pool("modBullet", "playerBullet", 100)
 	var p = PatternCircle.new()
 	#Power 1
 	p.bullet = "basicBullet"

@@ -55,9 +55,9 @@ SFX = ""
 tex_scale = 1.0
 tex_skew = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vrot"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkokg"]
 atlas = ExtResource("6_pbk2s")
-region = Rect2(32, 180, 32, 10)
+region = Rect2(258, 240, 256, 5)
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -90,7 +90,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4vrot")
+"texture": SubResource("AtlasTexture_nkokg")
 }],
 "loop": true,
 "name": &"marisaBasic",
@@ -125,7 +125,7 @@ size = Vector2(16, 10)
 size = Vector2(16, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuo35"]
-size = Vector2(32, 9)
+size = Vector2(256, 9)
 
 [node name="BulletHellManager" type="Node2D"]
 z_index = 999
@@ -140,7 +140,12 @@ default_delete = SubResource("Resource_tl1ht")
 
 [node name="0" type="Area2D" parent="SharedAreas"]
 
+[node name="1" type="Area2D" parent="SharedAreas"]
+collision_layer = 2
+collision_mask = 2
+
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("1")
 animation = &"marisaBasic"
 

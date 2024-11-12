@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var auto_start : bool
 @export var speed : float
 @export var nbr : int
+@export var bullet : String
 @export var pattern : Pattern
 @export var pooling : int
 @export var custom_pos : Array[float]
@@ -21,6 +22,7 @@ func get_follower():
 	push_error("Enemy " + str(self) + " needs to have a PathFollow2D as a parent.")
 
 func set_patterns():
+	pattern.bullet = bullet
 	Spawning.new_pattern(pattern_id, pattern)
 
 func get_spawn_pos():
@@ -45,8 +47,8 @@ func pause():
 
 func _ready() -> void:
 	set_patterns()
-	#if pooling != 0:
-		#Spawning.create_pool(pattern_id, "0", pooling)
+	if pooling != 0:
+		Spawning.create_pool(bullet, "0", pooling)
 	position = Vector2(0,0)
 	if auto_start:
 		avancing = true

@@ -466,13 +466,13 @@ atlas = ExtResource("2_2e164")
 region = Rect2(66, 146, 15, 15)
 
 [node name="Reimu" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 5
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_gcipf")
 max_speed = 300
 min_speed = 100
-power = 4
+power = 1.0
 lives = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -526,3 +526,8 @@ script = ExtResource("10_8ww3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="modL"]
 texture = SubResource("AtlasTexture_rjtp4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

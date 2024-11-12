@@ -31,7 +31,7 @@ angle_decal = 0.0
 symmetric = false
 center = 0
 symmetry_type = 0
-bullet = "e_bullet"
+bullet = ""
 nbr = 10
 iterations = 2
 pattern_angle = 0.0
@@ -139,8 +139,8 @@ position = Vector2(256, 256)
 texture = SubResource("AtlasTexture_rcjvs")
 
 [node name="wall" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="downLeft" type="CollisionPolygon2D" parent="wall"]
 polygon = PackedVector2Array(-64, -64, 0, -64, 0, 512, 512, 512, 512, 576, -64, 576)
@@ -149,6 +149,8 @@ polygon = PackedVector2Array(-64, -64, 0, -64, 0, 512, 512, 512, 512, 576, -64, 
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 576, 576, 576, 576, -64, 0, -64)
 
 [node name="projoWall" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="projoWall"]
 position = Vector2(256, -64)
@@ -198,7 +200,9 @@ loop = false
 auto_start = true
 speed = 3.0
 nbr = 10
+bullet = "e_bullet"
 pattern = SubResource("NavigationPolygon_mmkua")
+pooling = 100
 custom_pos = Array[float]([0.234, 0.672])
 
 [node name="BulletPattern" type="Path2D" parent="Path2D/PathFollow2D/Enemy"]
@@ -209,3 +213,4 @@ props = SubResource("PackedDataContainer_x57jo")
 
 [node name="Reimu" parent="." instance=ExtResource("4_hye48")]
 position = Vector2(256, 448)
+power = 4.0
