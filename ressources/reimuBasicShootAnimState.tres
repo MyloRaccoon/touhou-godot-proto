@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="animState" load_steps=2 format=3 uid="uid://c04yjixpd14hu"]
+
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="1_ybcq1"]
+
+[resource]
+script = ExtResource("1_ybcq1")
+ID = ""
+texture = "reimuBasic"
+collision = "reimuBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3mnriwui3awh"]
+[gd_scene load_steps=6 format=3 uid="uid://c3mnriwui3awh"]
 
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
 [ext_resource type="PackedScene" uid="uid://ba6dv44hes306" path="res://scenes/player.tscn" id="2_btyn3"]
+[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="3_igk7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
 atlas = ExtResource("1_55xh5")
@@ -42,3 +43,9 @@ offset_bottom = 512.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="projoWall"]
 position = Vector2(256, -32)
 shape = SubResource("RectangleShape2D_4gref")
+
+[node name="enemy" parent="." instance=ExtResource("3_igk7r")]
+position = Vector2(64, 64)
+
+[node name="enemy2" parent="." instance=ExtResource("3_igk7r")]
+position = Vector2(448, 256)
