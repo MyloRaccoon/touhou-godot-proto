@@ -1,78 +1,78 @@
-[gd_scene load_steps=43 format=3 uid="uid://ba6dv44hes306"]
+[gd_scene load_steps=43 format=3 uid="uid://bvf2n26nfqy8t"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_73ku8"]
-[ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="2_65rto"]
-[ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="3_tswq1"]
-[ext_resource type="Resource" uid="uid://c04yjixpd14hu" path="res://ressources/reimuBasicShootAnimState.tres" id="5_71j1b"]
-[ext_resource type="Script" path="res://scripts/mod.gd" id="7_7b5gn"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="7_7frx6"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="7_avh7n"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="8_6lfmf"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="8_gq8sk"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="9_8wm0y"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_gcipf"]
+[ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="2_2e164"]
+[ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="3_momi1"]
+[ext_resource type="Resource" uid="uid://c04yjixpd14hu" path="res://ressources/reimuBasicShootAnimState.tres" id="4_u8jg0"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_21ml8"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="6_eh6tu"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="7_i37y3"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="8_26w7g"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="9_yrdfd"]
+[ext_resource type="Script" path="res://scripts/mod.gd" id="10_8ww3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ald18"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(130, 48, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwibl"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(162, 48, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c468"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(194, 48, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4ec0"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(226, 48, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfyi5"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(1, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0bc7"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(33, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psl32"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(65, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mn18u"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(97, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2d3n"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(129, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1k64y"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(161, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvgw0"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(193, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s72si"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(225, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gr4p"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(128, 96, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omwx2"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(160, 96, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0b618"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(192, 96, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajr4s"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(224, 96, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1axba"]
@@ -142,7 +142,7 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0v32"]
-atlas = ExtResource("3_tswq1")
+atlas = ExtResource("3_momi1")
 region = Rect2(302, 49, 12, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnj72"]
@@ -277,9 +277,9 @@ func _ready():
 [sub_resource type="Curve" id="Curve_8q7qs"]
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_07meb"]
-script = ExtResource("8_6lfmf")
-anim_idle = ExtResource("5_71j1b")
-anim_more = Array[ExtResource("7_avh7n")]([])
+script = ExtResource("6_eh6tu")
+anim_idle = ExtResource("4_u8jg0")
+anim_more = Array[ExtResource("5_21ml8")]([])
 damage = 1.0
 speed = 1500.0
 scale = 1.0
@@ -354,7 +354,7 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 [sub_resource type="Curve" id="Curve_c18m8"]
 
 [sub_resource type="Resource" id="Resource_nxhgu"]
-script = ExtResource("7_avh7n")
+script = ExtResource("5_21ml8")
 ID = ""
 texture = "reimuHoming"
 collision = "reimuHoming"
@@ -365,9 +365,9 @@ tex_skew = 0.0
 [sub_resource type="Curve" id="Curve_dt58w"]
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_71nfh"]
-script = ExtResource("8_6lfmf")
+script = ExtResource("6_eh6tu")
 anim_idle = SubResource("Resource_nxhgu")
-anim_more = Array[ExtResource("7_avh7n")]([])
+anim_more = Array[ExtResource("5_21ml8")]([])
 damage = 1.0
 speed = 1500.0
 scale = 1.0
@@ -441,7 +441,7 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_koawm"]
 resource_name = "PatternOne"
-script = ExtResource("9_8wm0y")
+script = ExtResource("9_yrdfd")
 bullet = "modBullet"
 nbr = 1
 iterations = 1
@@ -462,14 +462,14 @@ wait_tween_length = 0.0
 wait_tween_time = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjtp4"]
-atlas = ExtResource("2_65rto")
+atlas = ExtResource("2_2e164")
 region = Rect2(66, 146, 15, 15)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Reimu" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
-script = ExtResource("1_73ku8")
+script = ExtResource("1_gcipf")
 max_speed = 300
 min_speed = 100
 power = 4
@@ -478,7 +478,7 @@ lives = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
 sprite_frames = SubResource("SpriteFrames_1axba")
-animation = &"neutral"
+animation = &"left"
 
 [node name="focus" type="Sprite2D" parent="."]
 visible = false
@@ -497,14 +497,14 @@ props = SubResource("PackedDataContainer_07meb")
 [node name="modBullet" type="Path2D" parent="."]
 position = Vector2(30, 0)
 curve = SubResource("Curve2D_m4sqg")
-script = ExtResource("7_7frx6")
+script = ExtResource("7_i37y3")
 id = "modBullet"
 props = SubResource("PackedDataContainer_71nfh")
 
 [node name="modPattern" type="Path2D" parent="."]
 position = Vector2(30, 0)
 curve = SubResource("Curve2D_ueu4d")
-script = ExtResource("8_gq8sk")
+script = ExtResource("8_26w7g")
 id = "modPattern"
 pattern = SubResource("NavigationPolygon_koawm")
 
@@ -514,7 +514,7 @@ position = Vector2(0, -58)
 [node name="modR" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(30, 0)
-script = ExtResource("7_7b5gn")
+script = ExtResource("10_8ww3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="modR"]
 texture = SubResource("AtlasTexture_rjtp4")
@@ -522,7 +522,7 @@ texture = SubResource("AtlasTexture_rjtp4")
 [node name="modL" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(-30, 0)
-script = ExtResource("7_7b5gn")
+script = ExtResource("10_8ww3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="modL"]
 texture = SubResource("AtlasTexture_rjtp4")

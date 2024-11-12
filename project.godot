@@ -22,6 +22,7 @@ Spawning="*res://addons/BulletUpHell/Spawning.tscn"
 
 window/size/viewport_width=776
 window/size/viewport_height=512
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor]

@@ -2,9 +2,6 @@ extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var focus_sprite = $focus
-@onready var modR = $modR
-@onready var modL = $modL
-@onready var homing = $homingTarget
 
 @export var max_speed : int
 @export var min_speed : int
@@ -16,24 +13,8 @@ var is_focus : bool
 
 var can_shoot = true
 
-func get_distance(node : Node2D):
-	return sqrt((node.global_position.x - global_position.x)**2 + (node.global_position.y - global_position.y)**2)
-
-func get_closest_enemy():
-	var enemies = []
-	for child in get_tree().get_nodes_in_group("enemy"):
-		enemies.append(child)
-	if len(enemies) == 0:
-		return null
-	var dist = get_distance(enemies[0])
-	var enemy_res = enemies[0]
-	for enemy in enemies:
-		if get_distance(enemy) < dist:
-			dist = get_distance(enemy)
-			enemy_res = enemy
-	return enemy_res
-
 func set_pattern():
+	return
 	Spawning.create_pool("basicBullet", "0", 100)
 	Spawning.create_pool("modBullet", "0", 100)
 	var p = PatternCircle.new()
@@ -93,6 +74,7 @@ func get_pattern() -> String:
 	if is_focus:
 		res += "Focus"
 	res += str(power)
+	return "basicMarisa"
 	return res
 
 func _ready() -> void:
@@ -100,18 +82,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
-	var closest_enemy = get_closest_enemy()
-	if closest_enemy != null:
-		homing.global_position = closest_enemy.global_position
-	else:
-		homing.position = Vector2(0, -58)
-	
 	if Input.is_action_pressed("shoot"):
-		if can_shoot:
-			Spawning.spawn(self, get_pattern())
-			Spawning.spawn(modL, "modPattern")
-			Spawning.spawn(modR, "modPattern")
-		can_shoot = !can_shoot
+		Spawning.spawn($Marker2D, get_pattern())
 	
 	if Input.is_action_pressed("focus"):
 		speed = min_speed
@@ -136,10 +108,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("focus"):
 		is_focus = true
 		focus_sprite.show()
-		modR.position.x = 15
-		modL.position.x = -15
 	elif event.is_action_released("focus"):
 		is_focus = false
 		focus_sprite.hide()
-		modR.position.x = 30
-		modL.position.x = -30

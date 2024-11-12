@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3mnriwui3awh"]
 
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
-[ext_resource type="PackedScene" uid="uid://ba6dv44hes306" path="res://scenes/player.tscn" id="2_btyn3"]
-[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="3_igk7r"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_oj3u4"]
+[ext_resource type="PackedScene" uid="uid://be2s0f83o2gr5" path="res://scenes/marisa.tscn" id="3_2ysol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
 atlas = ExtResource("1_55xh5")
@@ -12,6 +12,7 @@ region = Rect2(0, 511, 515, 513)
 size = Vector2(640, 64)
 
 [node name="stage" type="Node2D"]
+script = ExtResource("1_oj3u4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(392, 255)
@@ -30,22 +31,40 @@ polygon = PackedVector2Array(-64, -64, 0, -64, 0, 512, 512, 512, 512, 576, -64, 
 [node name="upRight" type="CollisionPolygon2D" parent="wall"]
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 576, 576, 576, 576, -64, 0, -64)
 
-[node name="Player" parent="." instance=ExtResource("2_btyn3")]
-position = Vector2(256, 448)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 512.0
-offset_right = 776.0
-offset_bottom = 512.0
-
 [node name="projoWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="projoWall"]
 position = Vector2(256, -32)
 shape = SubResource("RectangleShape2D_4gref")
 
-[node name="enemy" parent="." instance=ExtResource("3_igk7r")]
-position = Vector2(64, 64)
+[node name="ui" type="CanvasLayer" parent="."]
 
-[node name="enemy2" parent="." instance=ExtResource("3_igk7r")]
-position = Vector2(448, 256)
+[node name="ColorRect" type="ColorRect" parent="ui"]
+offset_left = 512.0
+offset_right = 776.0
+offset_bottom = 512.0
+color = Color(0.0392157, 0, 0.101961, 1)
+
+[node name="lbl_player" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 96.0
+offset_right = 607.0
+offset_bottom = 119.0
+text = "Player : 3"
+
+[node name="lbl_score" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 64.0
+offset_right = 628.0
+offset_bottom = 87.0
+text = "Score : 1000"
+
+[node name="lbl_power" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 128.0
+offset_right = 623.0
+offset_bottom = 151.0
+text = "Power : 1/4"
+
+[node name="Marisa" parent="." instance=ExtResource("3_2ysol")]
+position = Vector2(256, 448)

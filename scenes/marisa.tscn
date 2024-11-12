@@ -1,0 +1,295 @@
+[gd_scene load_steps=35 format=3 uid="uid://be2s0f83o2gr5"]
+
+[ext_resource type="Texture2D" uid="uid://i5mad2xd700y" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Marisa Kirisame.png" id="1_6e2kq"]
+[ext_resource type="Script" path="res://scripts/marisa.gd" id="1_n4uv3"]
+[ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="2_lnpk0"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="3_dk718"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="4_6rbnr"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="5_pfgmu"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="7_32wmy"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="8_dmr26"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_godlg"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(128, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvwmj"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(160, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k502e"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(192, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3am1s"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(224, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nig0k"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkskn"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5q51"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7rim"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m80va"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpcyi"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y44jb"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx601"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1udgc"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(128, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c82x"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(160, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvaay"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(192, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlgkt"]
+atlas = ExtResource("1_6e2kq")
+region = Rect2(224, 96, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gnckq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_godlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvwmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k502e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3am1s")
+}],
+"loop": true,
+"name": &"left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nig0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkskn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5q51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7rim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m80va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpcyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y44jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx601")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1udgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c82x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvaay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlgkt")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcjuy"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d20hh"]
+atlas = ExtResource("2_lnpk0")
+region = Rect2(302, 49, 12, 11)
+
+[sub_resource type="Curve2D" id="Curve2D_kwt1h"]
+
+[sub_resource type="Curve" id="Curve_ylwfr"]
+
+[sub_resource type="Resource" id="Resource_yqwf7"]
+script = ExtResource("4_6rbnr")
+ID = ""
+texture = "marisaBasic"
+collision = "marisaBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
+[sub_resource type="Curve" id="Curve_ny4jw"]
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_q2mf1"]
+script = ExtResource("5_pfgmu")
+anim_idle = SubResource("Resource_yqwf7")
+anim_more = Array[ExtResource("4_6rbnr")]([])
+damage = 1.0
+speed = 3000.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 30.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_ylwfr")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_ny4jw")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_8ndac"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xwoe4"]
+resource_name = "PatternLine"
+script = ExtResource("8_dmr26")
+offset = Vector2(0, 0)
+center = 1
+symmetric = true
+bullet = "marisaBasicBullet"
+nbr = 1
+iterations = 1
+pattern_angle = -1.5708
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
+forced_angle = 0.0
+forced_target = NodePath("")
+forced_lookat_mouse = false
+forced_pattern_lookat = true
+cooldown_stasis = false
+cooldown_spawn = 1.0
+cooldown_shoot = 0.0
+cooldown_next_spawn = 0.0
+cooldown_next_shoot = 0.0
+wait_tween_momentum = 0
+wait_tween_length = 0.0
+wait_tween_time = 0.0
+
+[node name="Marisa" type="CharacterBody2D"]
+script = ExtResource("1_n4uv3")
+max_speed = 300
+min_speed = 100
+power = 1
+lives = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+sprite_frames = SubResource("SpriteFrames_gnckq")
+animation = &"neutral"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lcjuy")
+
+[node name="focus" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_d20hh")
+
+[node name="BulletPattern" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kwt1h")
+script = ExtResource("3_dk718")
+id = "marisaBasicBullet"
+props = SubResource("PackedDataContainer_q2mf1")
+
+[node name="SpawnPattern" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8ndac")
+script = ExtResource("7_32wmy")
+id = "basicMarisa"
+pattern = SubResource("NavigationPolygon_xwoe4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -41)
