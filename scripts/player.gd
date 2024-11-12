@@ -57,14 +57,14 @@ func set_pattern():
 	p.nbr = 8
 	p.angle_total = 1
 	p.angle_decal = -0.45
-	Spawning.new_pattern("basicPattern3", p)
+	Spawning.new_pattern("basicPattern4", p)
 	
 	p = PatternCircle.new()
 	p.bullet = "basicBullet"
 	p.nbr = 8
 	p.angle_total = 0.3
 	p.angle_decal = -0.13
-	Spawning.new_pattern("basicPatternFocus3", p)
+	Spawning.new_pattern("basicPatternFocus4", p)
 
 func get_pattern() -> String:
 	var res = "basicPattern"

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_w35i7"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_ra0lu"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_uqn31"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_rdmci"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="10_rdmci"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_ormf1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_likgb"]

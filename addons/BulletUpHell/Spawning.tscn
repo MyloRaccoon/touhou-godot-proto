@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=19 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://3v4lq3g4dx6t" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b00fo4t1w011w" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_06.png" id="3_6fafs"]
 [ext_resource type="Texture2D" uid="uid://dem0dhv41l2qh" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_11.png" id="4_gntuv"]
 [ext_resource type="AudioStream" uid="uid://3jdvns41xo2q" path="res://addons/BulletUpHell/Bullet/Hit Hurt.wav" id="5_rada6"]
-[ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="6_ssk5q"]
+[ext_resource type="Texture2D" uid="uid://b2shlhhs50svh" path="res://assets/reimuBasicProjo.png" id="6_fi8yd"]
+[ext_resource type="Texture2D" uid="uid://duaerj8dvxbbd" path="res://assets/reimuHomingProjo.png" id="7_gmj6c"]
 
 [sub_resource type="Resource" id="Resource_uhb1j"]
 script = ExtResource("2_4dc5c")
@@ -53,10 +54,6 @@ SFX = ""
 tex_scale = 1.0
 tex_skew = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hq14"]
-atlas = ExtResource("6_ssk5q")
-region = Rect2(49, 180, 15, 10)
-
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
 "frames": [],
@@ -88,10 +85,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1hq14")
+"texture": ExtResource("6_fi8yd")
 }],
 "loop": true,
 "name": &"reimuBasic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gmj6c")
+}],
+"loop": true,
+"name": &"reimuHoming",
 "speed": 5.0
 }]
 
@@ -102,6 +107,9 @@ points = PackedVector2Array(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qt88d"]
 size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0e75"]
+size = Vector2(16, 6)
 
 [node name="BulletHellManager" type="Node2D"]
 z_index = 999
@@ -119,7 +127,7 @@ default_delete = SubResource("Resource_tl1ht")
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("1")
-animation = &"reimuBasic"
+animation = &"reimuHoming"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")
@@ -129,6 +137,9 @@ shape = SubResource("3")
 
 [node name="reimuBasic" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("RectangleShape2D_qt88d")
+
+[node name="reimuHoming" type="CollisionShape2D" parent="ShapeManager"]
+shape = SubResource("RectangleShape2D_j0e75")
 
 [node name="SFX" type="Node2D" parent="."]
 

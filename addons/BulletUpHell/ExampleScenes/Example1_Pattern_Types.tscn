@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd" id="7_aiav0"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd" id="8_ky438"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_x0nxu"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_tkfof"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="10_tkfof"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_iv1jv"]
 
 [sub_resource type="Curve2D" id="Curve2D_u3j77"]
