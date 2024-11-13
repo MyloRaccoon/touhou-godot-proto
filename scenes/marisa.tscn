@@ -165,7 +165,7 @@ tex_skew = 0.0
 script = ExtResource("5_pfgmu")
 anim_idle = SubResource("Resource_yqwf7")
 anim_more = Array[ExtResource("4_6rbnr")]([])
-damage = 1.0
+damage = 5.0
 speed = 3000.0
 scale = 1.0
 angle = 0.0
@@ -267,7 +267,6 @@ collision_mask = 5
 script = ExtResource("1_n4uv3")
 max_speed = 300
 min_speed = 100
-power = 1
 lives = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -295,3 +294,5 @@ pattern = SubResource("NavigationPolygon_xwoe4")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -41)
+
+[node name="Timer" type="Timer" parent="."]

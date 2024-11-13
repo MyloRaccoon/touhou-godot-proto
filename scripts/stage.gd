@@ -3,7 +3,7 @@ extends Node2D
 @onready var lbl_power = $ui/lbl_power
 @onready var lbl_player = $ui/lbl_player
 @onready var lbl_score = $ui/lbl_score
-@onready var player = $Reimu
+@onready var player = $Marisa
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

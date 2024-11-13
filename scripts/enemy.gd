@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var auto_start : bool
 @export var speed : float
+@export var life : int
 @export var nbr : int
 @export var bullet : String
 @export var pattern : Pattern
@@ -60,3 +61,8 @@ func _process(_delta: float) -> void:
 			if follower.progress_ratio >= spawn_pos[next_spawn_pos]:
 				Spawning.spawn(self, pattern_id)
 				next_spawn_pos += 1
+		if life <= 0:
+			queue_free()
+
+func touched(dmg):
+	life -= dmg

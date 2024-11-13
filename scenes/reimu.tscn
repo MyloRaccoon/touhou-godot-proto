@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://bvf2n26nfqy8t"]
+[gd_scene load_steps=45 format=3 uid="uid://bvf2n26nfqy8t"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_gcipf"]
+[ext_resource type="Script" path="res://scripts/reimu.gd" id="1_o8l56"]
 [ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="2_2e164"]
 [ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="3_momi1"]
-[ext_resource type="Resource" uid="uid://c04yjixpd14hu" path="res://ressources/reimuBasicShootAnimState.tres" id="4_u8jg0"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_21ml8"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="6_eh6tu"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="7_i37y3"]
@@ -274,13 +273,32 @@ func _ready():
 
 [sub_resource type="Curve" id="Curve_imeu6"]
 
+[sub_resource type="Resource" id="Resource_wmb7p"]
+script = ExtResource("5_21ml8")
+ID = ""
+texture = "reimuBasicDispawn"
+collision = "reimuBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
+[sub_resource type="Resource" id="Resource_atcw8"]
+script = ExtResource("5_21ml8")
+ID = ""
+texture = "reimuBasic"
+collision = "reimuBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
 [sub_resource type="Curve" id="Curve_8q7qs"]
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_07meb"]
 script = ExtResource("6_eh6tu")
-anim_idle = ExtResource("4_u8jg0")
+anim_idle = SubResource("Resource_atcw8")
+anim_delete = SubResource("Resource_wmb7p")
 anim_more = Array[ExtResource("5_21ml8")]([])
-damage = 1.0
+damage = 2.0
 speed = 1500.0
 scale = 1.0
 angle = -1.5696
@@ -353,6 +371,15 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Curve" id="Curve_c18m8"]
 
+[sub_resource type="Resource" id="Resource_pea25"]
+script = ExtResource("5_21ml8")
+ID = ""
+texture = "reimuHomingDispawn"
+collision = "reimuHoming"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
 [sub_resource type="Resource" id="Resource_nxhgu"]
 script = ExtResource("5_21ml8")
 ID = ""
@@ -367,6 +394,7 @@ tex_skew = 0.0
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_71nfh"]
 script = ExtResource("6_eh6tu")
 anim_idle = SubResource("Resource_nxhgu")
+anim_delete = SubResource("Resource_pea25")
 anim_more = Array[ExtResource("5_21ml8")]([])
 damage = 1.0
 speed = 1500.0
@@ -392,7 +420,7 @@ trigger_container = ""
 trigger_wait_for_shot = true
 homing_type = 0
 homing_target = NodePath("../homingTarget")
-homing_steer = 1.0
+homing_steer = 0.1
 homing_time_start = 0.0
 homing_duration = 999.0
 scale_multi_iterations = 0
@@ -469,10 +497,9 @@ region = Rect2(66, 146, 15, 15)
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_gcipf")
-max_speed = 300
-min_speed = 100
-power = 1.0
+script = ExtResource("1_o8l56")
+max_speed = 200
+min_speed = 50
 lives = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -528,6 +555,3 @@ script = ExtResource("10_8ww3e")
 texture = SubResource("AtlasTexture_rjtp4")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
