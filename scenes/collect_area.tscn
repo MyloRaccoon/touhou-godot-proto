@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctpprp8qws2td"]
+
+[ext_resource type="Script" path="res://scripts/collect_area.gd" id="1_l0xj0"]
+
+[node name="collectArea" type="Area2D" groups=["collectArea"]]
+script = ExtResource("1_l0xj0")

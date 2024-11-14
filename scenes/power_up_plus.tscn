@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://btoguwmy4isqp"]
+
+[ext_resource type="PackedScene" uid="uid://3s27k0s443ro" path="res://scenes/item.tscn" id="1_wnr8m"]
+[ext_resource type="Script" path="res://scripts/power_up_plus.gd" id="2_6spi7"]
+[ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="2_p8pgb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1gtm"]
+radius = 13.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbhta"]
+atlas = ExtResource("2_p8pgb")
+region = Rect2(324, 215, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw33a"]
+size = Vector2(16, 16)
+
+[node name="powerUpPlus" instance=ExtResource("1_wnr8m")]
+script = ExtResource("2_6spi7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectArea" index="0"]
+shape = SubResource("CircleShape2D_q1gtm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture = SubResource("AtlasTexture_qbhta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("RectangleShape2D_gw33a")

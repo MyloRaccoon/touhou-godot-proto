@@ -261,8 +261,9 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("1")
-animation = &"marisaBasic"
+animation = &"enemyBasic"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")

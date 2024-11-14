@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3s27k0s443ro"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_3bgs1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8isov"]
+radius = 53.0377
+
+[node name="item" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3bgs1")
+
+[node name="aspirationArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="collisionAspiration" type="CollisionShape2D" parent="aspirationArea"]
+shape = SubResource("CircleShape2D_8isov")
+
+[node name="collectArea" type="Area2D" parent="."]
+
+[connection signal="body_entered" from="aspirationArea" to="." method="_on_aspiration_area_body_entered"]
+[connection signal="body_exited" from="aspirationArea" to="." method="_on_aspiration_area_body_exited"]
+[connection signal="area_entered" from="collectArea" to="." method="_on_collect_area_area_entered"]

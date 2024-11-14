@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bvf2n26nfqy8t"]
+[gd_scene load_steps=47 format=3 uid="uid://bvf2n26nfqy8t"]
 
 [ext_resource type="Script" path="res://scripts/reimu.gd" id="1_o8l56"]
 [ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="2_2e164"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="8_26w7g"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="9_yrdfd"]
 [ext_resource type="Script" path="res://scripts/mod.gd" id="10_8ww3e"]
+[ext_resource type="PackedScene" uid="uid://ctpprp8qws2td" path="res://scenes/collect_area.tscn" id="10_75ktp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ald18"]
 atlas = ExtResource("2_2e164")
@@ -493,9 +494,13 @@ wait_tween_time = 0.0
 atlas = ExtResource("2_2e164")
 region = Rect2(66, 146, 15, 15)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdd4o"]
+radius = 13.0
+height = 46.0
+
 [node name="Reimu" type="CharacterBody2D" groups=["player"]]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 13
+collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_o8l56")
 max_speed = 200
@@ -555,3 +560,8 @@ script = ExtResource("10_8ww3e")
 texture = SubResource("AtlasTexture_rjtp4")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="collectArea" parent="." instance=ExtResource("10_75ktp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectArea"]
+shape = SubResource("CapsuleShape2D_jdd4o")
