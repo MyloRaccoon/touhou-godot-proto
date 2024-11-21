@@ -27,8 +27,8 @@ func instantiate_item(item, item_pos):
 
 
 func _on_item_swallow_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and player.is_power_max():
+	if body.is_in_group("player"):
 		for child in get_children():
 			if child.is_in_group("item"):
 				child.player = player
-				child.following = true
+				child.follow()

@@ -2,6 +2,7 @@ extends StaticBody2D
 
 signal finished
 
+@export var ID : String
 @export var auto_start : bool
 @export var speed : float
 @export_enum("stay", "dispawn", "loop") var finish_mod
@@ -10,8 +11,8 @@ signal finished
 @export var bullet : String
 @export var pattern : Pattern
 @export var pooling : int
-@export var pattern_angle_target : NodePath
 @export var custom_pos : Array[float]
+@export var custom_spawn_point : Node2D
 @export var gain : Dictionary
 
 @onready var spawn_pos = get_spawn_pos()
@@ -23,7 +24,7 @@ signal finished
 @onready var collision = get_collision()
 var bulletPattern 
 var spawnPattern
-var pattern_id = "Enemy pattern: " + str(self)
+var pattern_id = "Enemy pattern: " + str(self) + Global.get_id()
 var avancing : bool = false
 var is_finished : bool = false
 
@@ -51,8 +52,10 @@ func get_collision():
 
 func set_patterns():
 	pattern.bullet = bullet
-	pattern.pattern_angle_target = pattern_angle_target
 	Spawning.new_pattern(pattern_id, pattern)
+	if custom_spawn_point != null:
+		custom_spawn_point.auto_pattern_id = pattern_id
+		custom_spawn_point.shared_area_name = "enemyBullet"
 
 func get_spawn_pos():
 	var res = []
@@ -70,45 +73,56 @@ func start():
 func stop():
 	avancing = false
 	follower.progress_ratio = 0
+	next_spawn_pos = 0
 
 func pause():
 	avancing = false
 
+func replay():
+	stop()
+	start()
+
 func _ready() -> void:
-	if finish_mod == 2:
-		follower.loop = true
-	else:
-		follower.loop = false
+	follower.loop = false
 	sprite.play()
 	set_patterns()
 	if pooling != 0:
 		Spawning.create_pool(bullet, "enemyBullet", pooling)
+		custom_spawn_point.pool_amount = pooling
 	position = Vector2(0,0)
 	if auto_start:
-		avancing = true
+		start()
 
 func _process(_delta: float) -> void:
+	print(custom_spawn_point.rotating_speed)
 	if avancing:
 		follower.progress_ratio += (speed/100)
 		if next_spawn_pos != len(spawn_pos):
 			if follower.progress_ratio >= spawn_pos[next_spawn_pos]:
-				Spawning.spawn(follower, pattern_id, "enemyBullet")
+				if custom_spawn_point != null:
+					Spawning.spawn(custom_spawn_point, pattern_id, "enemyBullet")
+				else:
+					Spawning.spawn(follower, pattern_id, "enemyBullet")
 				next_spawn_pos += 1
 		if follower.progress_ratio >= 1:
 			match finish_mod:
 				1: dispawn()
-				2: next_spawn_pos = 0
+				2: replay()
 	if life <= 0:
+		spawn_gains()
 		dispawn()
 
-func dispawn():
+func spawn_gains():
 	for key in gain:
 		var value = gain[key]
 		for i in range(value):
 			var item = key.instantiate()
 			get_tree().current_scene.instantiate_item(item, global_position)
+
+func dispawn():
 	finished.emit()
-	path.queue_free()
+	avancing = false
+	follower.queue_free()
 
 func touched(dmg):
 	life -= dmg

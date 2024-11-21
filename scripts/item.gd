@@ -3,17 +3,18 @@ class_name Item
 
 @export var from_ceilling : bool
 
+enum states {SPAWNING, FALLING, FOLLOWING}
+
 const SPAWNING_SPD = 500
 const FALLING_SPD = 150
+var FRAME_FALL = randi_range(1, 15)
 
 var speed
 var direction : Vector2
 
 var frame = 0
-var frame_change = 20
-var changed = false
 
-var following = false
+var state = states.SPAWNING
 
 var player
 
@@ -25,32 +26,38 @@ func get_following_speed():
 func _ready() -> void:
 	if from_ceilling:
 		position = Vector2(256, -54)
-		frame_change = 0
+		fall()
 	else:
-		set_base_dir()
+		spawn()
 
 func _physics_process(_delta: float) -> void:
-	if !following:
+	if state != states.FOLLOWING:
 		check_following()
-		frame += 1
-	if frame >= frame_change and !changed and !following:
-		set_gravity_dir()
-		changed = true
-	
-	if following:
+		if state == states.SPAWNING:
+			frame += 1
+			if frame > FRAME_FALL:
+				fall()
+		elif state == states.FALLING and speed < FALLING_SPD:
+			speed += 2
+	else:
 		set_dir_to_player()
 
 	velocity = speed * direction
 
 	move_and_slide()
 
-func set_base_dir():
+func spawn():
+	state = states.SPAWNING
 	speed = SPAWNING_SPD
 	direction = Vector2(randf_range(-1, 1), randf_range(-1, 0)).normalized()
 
-func set_gravity_dir():
-	speed = FALLING_SPD
-	direction = Vector2(0, 1).normalized()
+func fall():
+	state = states.FALLING
+	speed = 0
+	direction = Vector2.DOWN
+
+func follow():
+	state = states.FOLLOWING
 
 func set_dir_to_player():
 	direction = player.position - position
@@ -65,14 +72,14 @@ func action(_player_node):
 func check_following():
 	if player != null:
 		if player.get_is_focus():
-			following = true
+			state = states.FOLLOWING
 
 func _on_aspiration_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
 
 func _on_aspiration_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player") and !following:
+	if body.is_in_group("player") and state != states.FOLLOWING:
 		player = null
 
 func _on_collect_area_area_entered(area: Area2D) -> void:

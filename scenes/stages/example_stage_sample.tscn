@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp1s05cv783ic"]
+
+[ext_resource type="PackedScene" uid="uid://c2djpuqj0s4s3" path="res://scenes/enemies/basic_fairy.tscn" id="1_h77i7"]
+[ext_resource type="Script" path="res://scripts/stages/example_stage_sample.gd" id="1_wxkrd"]
+
+[sub_resource type="Curve2D" id="Curve2D_3ekam"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, 0, -275.923, -1.25992, 275.923, 1.25992, 256, 128, 0, 0, 0, 0, 576, 0)
+}
+point_count = 3
+
+[node name="exampleStageSample" type="Node2D"]
+script = ExtResource("1_wxkrd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 512.0
+offset_right = 576.0
+offset_bottom = 512.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3ekam")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-64, 0)
+rotates = false
+
+[node name="basicFairy" parent="Path2D/PathFollow2D" instance=ExtResource("1_h77i7")]
+ID = "bf1"
+speed = 0.2
+finish_mod = 1
+nbr = 4
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-64, 0)
+rotates = false
+
+[node name="basicFairy" parent="Path2D/PathFollow2D2" instance=ExtResource("1_h77i7")]
+ID = "bf2"
+speed = 0.2
+finish_mod = 1
+nbr = 4
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-64, 0)
+rotates = false
+
+[node name="basicFairy" parent="Path2D/PathFollow2D3" instance=ExtResource("1_h77i7")]
+ID = "bf3"
+speed = 0.2
+finish_mod = 1
+nbr = 4

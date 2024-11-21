@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_oj3u4"]
-[ext_resource type="PackedScene" uid="uid://c2djpuqj0s4s3" path="res://scenes/enemies/basic_fairy.tscn" id="8_qq4dl"]
+[ext_resource type="PackedScene" uid="uid://d1o8dsuq38p6s" path="res://scenes/enemies/circle_metal_head_fairy.tscn" id="4_omjl2"]
 [ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="12_8lcsn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
@@ -15,17 +15,46 @@ size = Vector2(640, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxxbf"]
 size = Vector2(512, 32)
 
-[sub_resource type="Curve2D" id="Curve2D_qa0xk"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, 64, 0, 0, 0, 0, 576, 64)
-}
-point_count = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcbl7"]
 size = Vector2(512, 64)
 
+[sub_resource type="Curve2D" id="Curve2D_o67jf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -32, 0, 0, 0, 0, 128, 128)
+}
+point_count = 2
+
 [node name="stage" type="Node2D"]
 script = ExtResource("1_oj3u4")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ui"]
+offset_left = 512.0
+offset_right = 776.0
+offset_bottom = 512.0
+color = Color(0.0392157, 0, 0.101961, 1)
+
+[node name="lbl_player" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 96.0
+offset_right = 607.0
+offset_bottom = 119.0
+text = "Player : 3"
+
+[node name="lbl_score" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 64.0
+offset_right = 628.0
+offset_bottom = 87.0
+text = "Score : 1000"
+
+[node name="lbl_power" type="Label" parent="ui"]
+offset_left = 536.0
+offset_top = 128.0
+offset_right = 623.0
+offset_bottom = 151.0
+text = "Power : 1/4"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(392, 255)
@@ -70,56 +99,35 @@ collision_mask = 256
 position = Vector2(256, 560)
 shape = SubResource("RectangleShape2D_cxxbf")
 
-[node name="ui" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="ui"]
-offset_left = 512.0
-offset_right = 776.0
-offset_bottom = 512.0
-color = Color(0.0392157, 0, 0.101961, 1)
-
-[node name="lbl_player" type="Label" parent="ui"]
-offset_left = 536.0
-offset_top = 96.0
-offset_right = 607.0
-offset_bottom = 119.0
-text = "Player : 3"
-
-[node name="lbl_score" type="Label" parent="ui"]
-offset_left = 536.0
-offset_top = 64.0
-offset_right = 628.0
-offset_bottom = 87.0
-text = "Score : 1000"
-
-[node name="lbl_power" type="Label" parent="ui"]
-offset_left = 536.0
-offset_top = 128.0
-offset_right = 623.0
-offset_bottom = 151.0
-text = "Power : 1/4"
-
-[node name="Reimu" parent="." instance=ExtResource("12_8lcsn")]
-position = Vector2(264, 456)
-power = 4.0
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_qa0xk")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-64, 64)
-
-[node name="basicFairy" parent="Path2D/PathFollow2D" instance=ExtResource("8_qq4dl")]
-position = Vector2(2, 0)
-auto_start = true
-speed = 0.2
-nbr = 4
-
 [node name="itemSwallow" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itemSwallow"]
 position = Vector2(256, 32)
 shape = SubResource("RectangleShape2D_hcbl7")
 debug_color = Color(4.81307e-07, 0.650934, 0.0538588, 0.42)
+
+[node name="Reimu" parent="." instance=ExtResource("12_8lcsn")]
+position = Vector2(264, 456)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o67jf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, -32)
+rotates = false
+
+[node name="circleMetalHeadFairy" parent="Path2D/PathFollow2D" instance=ExtResource("4_omjl2")]
+auto_start = true
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(256, 0)
+curve = SubResource("Curve2D_o67jf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(128, -32)
+rotates = false
+
+[node name="circleMetalHeadFairy" parent="Path2D2/PathFollow2D" instance=ExtResource("4_omjl2")]
+auto_start = true
 
 [connection signal="body_entered" from="itemSwallow" to="." method="_on_item_swallow_body_entered"]

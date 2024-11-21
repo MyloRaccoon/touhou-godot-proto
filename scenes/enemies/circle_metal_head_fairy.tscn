@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://d1o8dsuq38p6s"]
+
+[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="1_y7acr"]
+[ext_resource type="Texture2D" uid="uid://df5mvg08l3ios" path="res://assets/PC Computer - Touhou Fuujinroku Mountain of Faith - Bosses and Enemies.png" id="2_0dajl"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="2_a5ojc"]
+[ext_resource type="PackedScene" uid="uid://dna18b1jbky0m" path="res://scenes/items/score_up.tscn" id="3_s11w0"]
+[ext_resource type="PackedScene" uid="uid://btoguwmy4isqp" path="res://scenes/items/power_up_plus.tscn" id="4_hubws"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="4_sp1v3"]
+[ext_resource type="PackedScene" uid="uid://gsbosq8ejy54" path="res://scenes/items/power_up.tscn" id="5_h714f"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hrpt0"]
+resource_name = "PatternCircle"
+script = ExtResource("2_a5ojc")
+radius = 0
+angle_total = 6.28319
+angle_decal = 0.0
+symmetric = false
+center = 0
+symmetry_type = 0
+bullet = "enemyBigBlue"
+nbr = 5
+iterations = -1
+pattern_angle = 0.0
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
+forced_angle = 0.0
+forced_target = NodePath("")
+forced_lookat_mouse = false
+forced_pattern_lookat = true
+cooldown_stasis = false
+cooldown_spawn = 0.5
+cooldown_shoot = 0.0
+cooldown_next_spawn = 0.0
+cooldown_next_shoot = 0.0
+wait_tween_momentum = 0
+wait_tween_length = 0.0
+wait_tween_time = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sypbn"]
+atlas = ExtResource("2_0dajl")
+region = Rect2(48, 1383, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgv5v"]
+atlas = ExtResource("2_0dajl")
+region = Rect2(80, 1383, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5stt"]
+atlas = ExtResource("2_0dajl")
+region = Rect2(112, 1383, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8kd4"]
+atlas = ExtResource("2_0dajl")
+region = Rect2(144, 1383, 32, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5bwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sypbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgv5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5stt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8kd4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cycrx"]
+
+[node name="circleMetalHeadFairy" node_paths=PackedStringArray("custom_spawn_point") instance=ExtResource("1_y7acr")]
+life = 500
+bullet = "enemyBigBlue"
+pattern = SubResource("NavigationPolygon_hrpt0")
+pooling = 500
+custom_pos = Array[float]([1.0])
+custom_spawn_point = NodePath("SpawnPoint")
+gain = {
+ExtResource("3_s11w0"): 10,
+ExtResource("4_hubws"): 3,
+ExtResource("5_h714f"): 5
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_u5bwe")
+frame_progress = 0.593953
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_cycrx")
+
+[node name="SpawnPoint" type="Node2D" parent="." index="2"]
+script = ExtResource("4_sp1v3")
+active = true
+auto_pattern_id = ""
+shared_area_name = "enemyBullet"
+rotating_speed = 10.0
+pool_amount = 100
+auto_start_on_cam = false
+auto_start_after_time = 0.0
+auto_start_at_distance = 5.0
+auto_distance_from = NodePath("")
+trigger_container = NodePath("")

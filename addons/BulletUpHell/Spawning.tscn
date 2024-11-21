@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=39 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://3v4lq3g4dx6t" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
@@ -76,6 +76,10 @@ region = Rect2(308, 7, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_auyhf"]
 atlas = ExtResource("6_3vx10")
 region = Rect2(324, 7, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7c1c"]
+atlas = ExtResource("6_3vx10")
+region = Rect2(69, 465, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pshfu"]
 atlas = ExtResource("8_ke1lb")
@@ -165,6 +169,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l7c1c")
+}],
+"loop": true,
+"name": &"enemyBigBlue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_7c03p")
 }],
 "loop": true,
@@ -239,6 +251,9 @@ size = Vector2(532, 9)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs611"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tovpm"]
+radius = 26.0192
+
 [node name="BulletHellManager" type="Node2D"]
 z_index = 999
 script = ExtResource("1")
@@ -257,9 +272,8 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("1")
-animation = &"marisaBasic"
+animation = &"enemyBigBlue"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")
@@ -279,6 +293,9 @@ shape = SubResource("RectangleShape2D_wuo35")
 
 [node name="enemyBasic" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("CircleShape2D_hs611")
+
+[node name="enemyBig" type="CollisionShape2D" parent="ShapeManager"]
+shape = SubResource("CircleShape2D_tovpm")
 
 [node name="SFX" type="Node2D" parent="."]
 
