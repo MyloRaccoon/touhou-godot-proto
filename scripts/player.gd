@@ -20,7 +20,7 @@ func get_is_focus():
 	return is_focus
 
 func set_pattern():
-	push_error("need to implement set_pattern")
+	push_warning("need to implement set_pattern")
 
 func get_pattern() -> String:
 	var res = name + "BasicPattern"

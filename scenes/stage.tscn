@@ -1,133 +1,28 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3mnriwui3awh"]
+[gd_scene load_steps=10 format=3 uid="uid://c3mnriwui3awh"]
 
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_oj3u4"]
-[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="4_60hl8"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="4_n37me"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_hoh1v"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="6_byvsp"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="8_adep8"]
-[ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="8_f8sg5"]
-[ext_resource type="PackedScene" uid="uid://gsbosq8ejy54" path="res://scenes/power_up.tscn" id="9_gx28e"]
+[ext_resource type="PackedScene" uid="uid://c2djpuqj0s4s3" path="res://scenes/enemies/basic_fairy.tscn" id="8_qq4dl"]
+[ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="12_8lcsn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
 atlas = ExtResource("1_55xh5")
-region = Rect2(0, 511, 515, 513)
+region = Rect2(1024, 0, 512, 511)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gref"]
 size = Vector2(640, 64)
 
-[sub_resource type="Curve2D" id="Curve2D_g0hdt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxxbf"]
+size = Vector2(512, 32)
+
+[sub_resource type="Curve2D" id="Curve2D_qa0xk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 64, 64, 0, 0, 0, 0, 448, 64)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 64, 0, 0, 0, 0, 576, 64)
 }
 point_count = 2
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_mmkua"]
-resource_name = "PatternCircle"
-script = ExtResource("8_adep8")
-radius = 0
-angle_total = 6.28319
-angle_decal = 0.0
-symmetric = false
-center = 0
-symmetry_type = 0
-bullet = ""
-nbr = 10
-iterations = 2
-pattern_angle = 0.0
-pattern_angle_target = NodePath("")
-pattern_angle_mouse = false
-forced_angle = 0.0
-forced_target = NodePath("")
-forced_lookat_mouse = false
-forced_pattern_lookat = true
-cooldown_stasis = false
-cooldown_spawn = 0.2
-cooldown_shoot = 0.0
-cooldown_next_spawn = 0.0
-cooldown_next_shoot = 0.0
-wait_tween_momentum = 0
-wait_tween_length = 0.0
-wait_tween_time = 0.0
-
-[sub_resource type="Curve2D" id="Curve2D_4p812"]
-
-[sub_resource type="Curve" id="Curve_hrl2d"]
-
-[sub_resource type="Curve" id="Curve_ttg23"]
-
-[sub_resource type="PackedDataContainer" id="PackedDataContainer_x57jo"]
-script = ExtResource("6_byvsp")
-anim_more = Array[ExtResource("5_hoh1v")]([])
-damage = 1.0
-speed = 100.0
-scale = 1.0
-angle = 0.0
-groups = PackedStringArray()
-spec_bounces = 0
-spec_no_collision = false
-spec_modulate_loop = 0.0
-spec_trail_length = 0.0
-spec_trail_width = 0.0
-spec_trail_modulate = Color(1, 1, 1, 1)
-spec_rotating_speed = 0.0
-death_after_time = 10.0
-death_outside_box = Rect2(0, 0, 0, 0)
-death_from_collision = true
-a_direction_equation = ""
-a_curve_movement = 0
-a_speed_multiplier = SubResource("Curve_hrl2d")
-a_speed_multi_iterations = 0
-a_speed_multi_scale = 0.0
-trigger_container = ""
-trigger_wait_for_shot = true
-homing_type = 0
-homing_target = NodePath("")
-homing_steer = 1.0
-homing_time_start = 0.5
-homing_duration = 999.0
-scale_multi_iterations = 0
-scale_multiplier = SubResource("Curve_ttg23")
-scale_multi_scale = 1.0
-r_randomisation_chances = 1.0
-r_speed_choice = PackedFloat32Array()
-r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = PackedFloat32Array()
-r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = PackedFloat32Array()
-r_angle_variation = Vector3(0, 0, 0)
-r_group_choice = []
-r_bounce_choice = PackedInt32Array()
-r_bounce_variation = Vector3(0, 0, 0)
-r_no_coll_chances = 0.0
-r_modulate_variation = Vector3(0, 0, 0)
-r_trail_length_variation = Vector3(0, 0, 0)
-r_trail_color_variation = Vector3(0, 0, 0)
-r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = PackedFloat32Array()
-r_death_after_variation = Vector3(0, 0, 0)
-r_death_outside_chances = 0.0
-r_dir_equation_choice = PackedStringArray()
-r_curve_choice = []
-r_speed_multi_curve_choice = []
-r_speed_multi_iter_variation = Vector3(0, 0, 0)
-r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = PackedStringArray()
-r_wait_for_shot_chances = 0.0
-r_homing_target_choice = []
-r_special_target_choice = PackedStringArray()
-r_group_target_choice = PackedStringArray()
-r_pos_target_choice = PackedVector2Array()
-r_steer_choice = PackedFloat32Array()
-r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = PackedFloat32Array()
-r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = PackedFloat32Array()
-r_homing_dur_variation = Vector3(0, 0, 0)
-r_scale_multi_curve_choice = []
-r_scale_multi_iter_variation = Vector3(0, 0, 0)
-r_scale_multi_scale_variation = Vector3(0, 0, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcbl7"]
+size = Vector2(512, 64)
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_oj3u4")
@@ -160,6 +55,21 @@ shape = SubResource("RectangleShape2D_4gref")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="projoWall"]
 polygon = PackedVector2Array(-64, -64, -64, 576, 576, 576, 576, -64, 640, -64, 640, 640, -128, 640, -128, -64)
 
+[node name="itemWall" type="StaticBody2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="collision" type="CollisionPolygon2D" parent="itemWall"]
+polygon = PackedVector2Array(-64, -448, 0, -448, 0, 576, 512, 576, 512, -448, 576, -448, 576, 640, -64, 640)
+
+[node name="destroyItem" type="Area2D" parent="itemWall" groups=["destroyArea"]]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemWall/destroyItem"]
+position = Vector2(256, 560)
+shape = SubResource("RectangleShape2D_cxxbf")
+
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="ui"]
@@ -189,29 +99,27 @@ offset_right = 623.0
 offset_bottom = 151.0
 text = "Power : 1/4"
 
+[node name="Reimu" parent="." instance=ExtResource("12_8lcsn")]
+position = Vector2(264, 456)
+power = 4.0
+
 [node name="Path2D" type="Path2D" parent="."]
-visible = false
-curve = SubResource("Curve2D_g0hdt")
+curve = SubResource("Curve2D_qa0xk")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(64, 64)
-rotates = false
-loop = false
+position = Vector2(-64, 64)
 
-[node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource("4_60hl8")]
-nbr = 10
-bullet = "e_bullet"
-pattern = SubResource("NavigationPolygon_mmkua")
-pooling = 200
+[node name="basicFairy" parent="Path2D/PathFollow2D" instance=ExtResource("8_qq4dl")]
+position = Vector2(2, 0)
+auto_start = true
+speed = 0.2
+nbr = 4
 
-[node name="BulletPattern" type="Path2D" parent="Path2D/PathFollow2D/Enemy"]
-curve = SubResource("Curve2D_4p812")
-script = ExtResource("4_n37me")
-id = "e_bullet"
-props = SubResource("PackedDataContainer_x57jo")
+[node name="itemSwallow" type="Area2D" parent="."]
 
-[node name="Reimu" parent="." instance=ExtResource("8_f8sg5")]
-position = Vector2(256, 448)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemSwallow"]
+position = Vector2(256, 32)
+shape = SubResource("RectangleShape2D_hcbl7")
+debug_color = Color(4.81307e-07, 0.650934, 0.0538588, 0.42)
 
-[node name="powerUp" parent="." instance=ExtResource("9_gx28e")]
-position = Vector2(256, 64)
+[connection signal="body_entered" from="itemSwallow" to="." method="_on_item_swallow_body_entered"]

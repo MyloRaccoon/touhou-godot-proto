@@ -1,0 +1,169 @@
+[gd_scene load_steps=19 format=3 uid="uid://c2djpuqj0s4s3"]
+
+[ext_resource type="PackedScene" uid="uid://ctllu4meu2gbx" path="res://scenes/enemy.tscn" id="1_e17l8"]
+[ext_resource type="Texture2D" uid="uid://df5mvg08l3ios" path="res://assets/PC Computer - Touhou Fuujinroku Mountain of Faith - Bosses and Enemies.png" id="2_8ayce"]
+[ext_resource type="PackedScene" uid="uid://dna18b1jbky0m" path="res://scenes/items/score_up.tscn" id="3_ibm72"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="3_veuse"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="4_5m31t"]
+[ext_resource type="PackedScene" uid="uid://gsbosq8ejy54" path="res://scenes/items/power_up.tscn" id="4_r1smh"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_ep1jg"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="6_8g3xg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8v7q2"]
+resource_name = "PatternLine"
+script = ExtResource("3_veuse")
+offset = Vector2(10, 10)
+center = 3
+symmetric = false
+bullet = "basicFairyBullet"
+nbr = 5
+iterations = 1
+pattern_angle = 1.5708
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
+forced_angle = 0.0
+forced_target = NodePath("")
+forced_lookat_mouse = false
+forced_pattern_lookat = true
+cooldown_stasis = false
+cooldown_spawn = 0.2
+cooldown_shoot = 0.0
+cooldown_next_spawn = 0.0
+cooldown_next_shoot = 0.0
+wait_tween_momentum = 0
+wait_tween_length = 0.0
+wait_tween_time = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5q2m"]
+atlas = ExtResource("2_8ayce")
+region = Rect2(307, 1641, 29, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q58w5"]
+atlas = ExtResource("2_8ayce")
+region = Rect2(338, 1641, 29, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klkmm"]
+atlas = ExtResource("2_8ayce")
+region = Rect2(369, 1641, 29, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwtcm"]
+atlas = ExtResource("2_8ayce")
+region = Rect2(400, 1641, 29, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grv8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5q2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q58w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klkmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwtcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okbd5"]
+
+[sub_resource type="Curve" id="Curve_valpk"]
+
+[sub_resource type="Curve" id="Curve_kalrn"]
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_htd14"]
+script = ExtResource("6_8g3xg")
+anim_more = Array[ExtResource("5_ep1jg")]([])
+damage = 1.0
+speed = 150.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 30.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_valpk")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_kalrn")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[node name="basicFairy" instance=ExtResource("1_e17l8")]
+bullet = "basicFairyBullet"
+pattern = SubResource("NavigationPolygon_8v7q2")
+pooling = 100
+gain = {
+ExtResource("3_ibm72"): 5,
+ExtResource("4_r1smh"): 3
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_grv8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_okbd5")
+
+[node name="BulletPattern" type="Path2D" parent="." index="2"]
+script = ExtResource("4_5m31t")
+id = "basicFairyBullet"
+props = SubResource("PackedDataContainer_htd14")

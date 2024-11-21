@@ -166,7 +166,7 @@ script = ExtResource("5_pfgmu")
 anim_idle = SubResource("Resource_yqwf7")
 anim_more = Array[ExtResource("4_6rbnr")]([])
 damage = 5.0
-speed = 3000.0
+speed = 1e+06
 scale = 1.0
 angle = 0.0
 groups = PackedStringArray()
@@ -177,7 +177,7 @@ spec_trail_length = 0.0
 spec_trail_width = 0.0
 spec_trail_modulate = Color(1, 1, 1, 1)
 spec_rotating_speed = 0.0
-death_after_time = 30.0
+death_after_time = 0.1
 death_outside_box = Rect2(0, 0, 0, 0)
 death_from_collision = true
 a_direction_equation = ""
@@ -265,8 +265,8 @@ wait_tween_time = 0.0
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("1_n4uv3")
-max_speed = 300
-min_speed = 100
+max_speed = 400
+min_speed = 150
 lives = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -293,6 +293,6 @@ id = "basicMarisa"
 pattern = SubResource("NavigationPolygon_xwoe4")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -41)
+position = Vector2(0, -50)
 
 [node name="Timer" type="Timer" parent="."]

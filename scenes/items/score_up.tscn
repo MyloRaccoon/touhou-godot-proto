@@ -10,10 +10,12 @@
 atlas = ExtResource("2_4c6eb")
 region = Rect2(294, 217, 12, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_voapq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy6mu"]
 size = Vector2(12, 12)
 
 [node name="score_up" instance=ExtResource("1_tqbyc")]
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("2_rg3kn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collectArea" index="0"]
@@ -23,4 +25,4 @@ shape = SubResource("CircleShape2D_p82vv")
 texture = SubResource("AtlasTexture_oe06f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-shape = SubResource("RectangleShape2D_voapq")
+shape = SubResource("RectangleShape2D_cy6mu")

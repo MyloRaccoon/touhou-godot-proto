@@ -38,6 +38,8 @@ enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg")
 enemy=""
 player=""
 collectArea=""
+destroyArea=""
+item=""
 
 [input]
 

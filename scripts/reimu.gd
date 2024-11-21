@@ -25,8 +25,8 @@ func get_closest_enemy():
 
 func set_pattern():
 	#bug when creating pool with a sharedArea that is not the defautl one...
-	Spawning.create_pool("basicBullet", "1", 100)
-	Spawning.create_pool("modBullet", "1", 100)
+	Spawning.create_pool("basicBullet", "playerBullet", 100)
+	Spawning.create_pool("modBullet", "playerBullet", 100)
 	var p = PatternCircle.new()
 	#Power 1
 	p.bullet = "basicBullet"
@@ -81,9 +81,9 @@ func set_pattern():
 
 func shoot():
 	if can_shoot:
-		Spawning.spawn(self, get_pattern(), "1")
-		Spawning.spawn(modL, "modPattern", "1")
-		Spawning.spawn(modR, "modPattern", "1")
+		Spawning.spawn(self, get_pattern(), "playerBullet")
+		Spawning.spawn(modL, "modPattern", "playerBullet")
+		Spawning.spawn(modR, "modPattern", "playerBullet")
 	can_shoot = !can_shoot
 
 func _physics_process(delta: float) -> void:

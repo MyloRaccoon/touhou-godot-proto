@@ -1,4 +1,4 @@
 extends Player
 
 func shoot():
-	Spawning.spawn(self, "basicMarisa", "1")
+	Spawning.spawn($Marker2D, "basicMarisa", "playerBullet")

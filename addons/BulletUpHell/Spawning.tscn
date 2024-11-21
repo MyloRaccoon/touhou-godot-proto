@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=37 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://3v4lq3g4dx6t" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://3jdvns41xo2q" path="res://addons/BulletUpHell/Bullet/Hit Hurt.wav" id="5_rada6"]
 [ext_resource type="Texture2D" uid="uid://d2ms0fqql1iom" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Bullets.png" id="6_3vx10"]
 [ext_resource type="Texture2D" uid="uid://b2shlhhs50svh" path="res://assets/reimuBasicProjo.png" id="6_fi8yd"]
-[ext_resource type="Texture2D" uid="uid://i5mad2xd700y" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Marisa Kirisame.png" id="6_pbk2s"]
+[ext_resource type="Texture2D" uid="uid://dcw4dkxewiu3c" path="res://assets/marisaLaser.png" id="7_7c03p"]
 [ext_resource type="Texture2D" uid="uid://duaerj8dvxbbd" path="res://assets/reimuHomingProjo.png" id="7_gmj6c"]
 [ext_resource type="Texture2D" uid="uid://bwybfieyhdhpf" path="res://assets/PC Computer - Touhou Seirensen Undefined Fantastic Object - Reimu Hakurei.png" id="8_ke1lb"]
 
@@ -76,10 +76,6 @@ region = Rect2(308, 7, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_auyhf"]
 atlas = ExtResource("6_3vx10")
 region = Rect2(324, 7, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkokg"]
-atlas = ExtResource("6_pbk2s")
-region = Rect2(258, 240, 256, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pshfu"]
 atlas = ExtResource("8_ke1lb")
@@ -169,7 +165,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nkokg")
+"texture": ExtResource("7_7c03p")
 }],
 "loop": true,
 "name": &"marisaBasic",
@@ -238,7 +234,7 @@ size = Vector2(16, 10)
 size = Vector2(16, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuo35"]
-size = Vector2(256, 9)
+size = Vector2(532, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs611"]
 radius = 6.0
@@ -254,16 +250,16 @@ default_delete = SubResource("Resource_tl1ht")
 
 [node name="SharedAreas" type="Node2D" parent="."]
 
-[node name="0" type="Area2D" parent="SharedAreas"]
+[node name="enemyBullet" type="Area2D" parent="SharedAreas"]
 
-[node name="1" type="Area2D" parent="SharedAreas"]
+[node name="playerBullet" type="Area2D" parent="SharedAreas"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("1")
-animation = &"enemyBasic"
+animation = &"marisaBasic"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")
@@ -278,6 +274,7 @@ shape = SubResource("RectangleShape2D_qt88d")
 shape = SubResource("RectangleShape2D_j0e75")
 
 [node name="marisaBasic" type="CollisionShape2D" parent="ShapeManager"]
+position = Vector2(235, -1)
 shape = SubResource("RectangleShape2D_wuo35")
 
 [node name="enemyBasic" type="CollisionShape2D" parent="ShapeManager"]

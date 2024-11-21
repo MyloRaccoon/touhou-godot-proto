@@ -421,7 +421,7 @@ trigger_container = ""
 trigger_wait_for_shot = true
 homing_type = 0
 homing_target = NodePath("../homingTarget")
-homing_steer = 0.1
+homing_steer = 100.0
 homing_time_start = 0.0
 homing_duration = 999.0
 scale_multi_iterations = 0
@@ -503,8 +503,8 @@ collision_layer = 13
 collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_o8l56")
-max_speed = 200
-min_speed = 50
+max_speed = 300
+min_speed = 100
 lives = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

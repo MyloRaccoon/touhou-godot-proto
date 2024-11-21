@@ -1,9 +1,10 @@
 extends CharacterBody2D
 class_name Item
 
+@export var from_ceilling : bool
+
 const SPAWNING_SPD = 500
-const FALLING_SPD = 300
-const FOLLOWING_SPD = 300
+const FALLING_SPD = 150
 
 var speed
 var direction : Vector2
@@ -17,13 +18,16 @@ var following = false
 var player
 
 func get_following_speed():
-	return 100
 	if player != null:
-		return player.max_speed
+		return player.max_speed + 100
 	return 800
 
 func _ready() -> void:
-	set_base_dir()
+	if from_ceilling:
+		position = Vector2(256, -54)
+		frame_change = 0
+	else:
+		set_base_dir()
 
 func _physics_process(_delta: float) -> void:
 	if !following:
@@ -50,7 +54,9 @@ func set_gravity_dir():
 
 func set_dir_to_player():
 	direction = player.position - position
-	direction.normalized()
+	direction = direction.normalized()
+	speed = get_following_speed()
+	
 
 func action(_player_node):
 	push_warning("need to implements action")
@@ -59,7 +65,6 @@ func action(_player_node):
 func check_following():
 	if player != null:
 		if player.get_is_focus():
-			speed = get_following_speed()
 			following = true
 
 func _on_aspiration_area_body_entered(body: Node2D) -> void:
@@ -73,3 +78,5 @@ func _on_aspiration_area_body_exited(body: Node2D) -> void:
 func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectArea"):
 		action(area.player())
+	elif area.is_in_group("destroyItem"):
+		queue_free()
