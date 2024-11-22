@@ -41,11 +41,10 @@ func shoot():
 	Spawning.spawn(self, get_pattern(), "1")
 
 func _physics_process(_delta: float) -> void:
-	
+	power = clampf(power, 1.0, 4.0)
 	if invisibility:
 		sprite.visible = !sprite.visible
 		collision.disabled = true
-	born_power()
 	if Input.is_action_pressed("shoot"):
 		shoot()
 	
@@ -77,12 +76,6 @@ func _input(event: InputEvent) -> void:
 		focus(true)
 	elif event.is_action_released("focus"):
 		focus(false)
-
-func born_power():
-	if power < 1.0:
-		power = 1.0
-	elif power > 4.0:
-		power = 4.0
 
 func touched():
 	invisibility = true

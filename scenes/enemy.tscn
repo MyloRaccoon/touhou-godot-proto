@@ -9,3 +9,5 @@ script = ExtResource("1_yibhd")
 speed = 1.0
 finish_mod = 0
 life = 100
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

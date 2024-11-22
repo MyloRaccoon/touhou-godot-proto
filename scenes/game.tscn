@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3mnriwui3awh"]
+[gd_scene load_steps=9 format=3 uid="uid://c3mnriwui3awh"]
 
-[ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="1_55xh5"]
-[ext_resource type="Script" path="res://scripts/stage.gd" id="1_oj3u4"]
-[ext_resource type="PackedScene" uid="uid://d1o8dsuq38p6s" path="res://scenes/enemies/circle_metal_head_fairy.tscn" id="4_omjl2"]
-[ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="12_8lcsn"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_jdqv7"]
+[ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="2_tgkek"]
+[ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="3_68j3f"]
+[ext_resource type="PackedScene" uid="uid://bddloyychq4bx" path="res://scenes/stages/stage1_example.tscn" id="4_0vgsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcjvs"]
-atlas = ExtResource("1_55xh5")
+atlas = ExtResource("2_tgkek")
 region = Rect2(1024, 0, 512, 511)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gref"]
@@ -18,14 +18,8 @@ size = Vector2(512, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcbl7"]
 size = Vector2(512, 64)
 
-[sub_resource type="Curve2D" id="Curve2D_o67jf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 128, -32, 0, 0, 0, 0, 128, 128)
-}
-point_count = 2
-
-[node name="stage" type="Node2D"]
-script = ExtResource("1_oj3u4")
+[node name="game" type="Node2D"]
+script = ExtResource("1_jdqv7")
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -106,28 +100,10 @@ position = Vector2(256, 32)
 shape = SubResource("RectangleShape2D_hcbl7")
 debug_color = Color(4.81307e-07, 0.650934, 0.0538588, 0.42)
 
-[node name="Reimu" parent="." instance=ExtResource("12_8lcsn")]
+[node name="Reimu" parent="." instance=ExtResource("3_68j3f")]
 position = Vector2(264, 456)
+power = 3.5
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_o67jf")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(128, -32)
-rotates = false
-
-[node name="circleMetalHeadFairy" parent="Path2D/PathFollow2D" instance=ExtResource("4_omjl2")]
-auto_start = true
-
-[node name="Path2D2" type="Path2D" parent="."]
-position = Vector2(256, 0)
-curve = SubResource("Curve2D_o67jf")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(128, -32)
-rotates = false
-
-[node name="circleMetalHeadFairy" parent="Path2D2/PathFollow2D" instance=ExtResource("4_omjl2")]
-auto_start = true
+[node name="stage1_example" parent="." instance=ExtResource("4_0vgsm")]
 
 [connection signal="body_entered" from="itemSwallow" to="." method="_on_item_swallow_body_entered"]

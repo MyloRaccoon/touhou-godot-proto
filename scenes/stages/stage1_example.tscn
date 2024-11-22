@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bddloyychq4bx"]
+
+[ext_resource type="Script" path="res://scripts/stages/stage_1_example.gd" id="1_crw7k"]
+[ext_resource type="PackedScene" uid="uid://dp1s05cv783ic" path="res://scenes/stages/example_stage_sample.tscn" id="2_ic86e"]
+[ext_resource type="PackedScene" uid="uid://bjuxujrjiosd3" path="res://scenes/stages/example_stage_sample_2.tscn" id="3_04rva"]
+
+[node name="stage1_example" type="Node2D"]
+script = ExtResource("1_crw7k")
+auto_start = true
+
+[node name="exampleStageSample" parent="." instance=ExtResource("2_ic86e")]
+ID = "threeF"
+
+[node name="example_stage_sample2" parent="." instance=ExtResource("3_04rva")]
+ID = "twoCircle"

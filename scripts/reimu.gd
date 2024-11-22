@@ -2,7 +2,8 @@ extends Player
 
 @onready var modR = $modR
 @onready var modL = $modL
-@onready var homing = $homingTarget
+@onready var homingR = $homingTargetR
+@onready var homingL = $homingTargetL
 
 var can_shoot = true
 
@@ -26,7 +27,8 @@ func get_closest_enemy():
 func set_pattern():
 	#bug when creating pool with a sharedArea that is not the defautl one...
 	Spawning.create_pool("basicBullet", "playerBullet", 100)
-	Spawning.create_pool("modBullet", "playerBullet", 100)
+	Spawning.create_pool("modBulletR", "playerBullet", 100)
+	Spawning.create_pool("modBulletL", "playerBullet", 100)
 	var p = PatternCircle.new()
 	#Power 1
 	p.bullet = "basicBullet"
@@ -82,16 +84,18 @@ func set_pattern():
 func shoot():
 	if can_shoot:
 		Spawning.spawn(self, get_pattern(), "playerBullet")
-		Spawning.spawn(modL, "modPattern", "playerBullet")
-		Spawning.spawn(modR, "modPattern", "playerBullet")
+		Spawning.spawn(modL, "modPatternL", "playerBullet")
+		Spawning.spawn(modR, "modPatternR", "playerBullet")
 	can_shoot = !can_shoot
 
 func _physics_process(delta: float) -> void:
 	var closest_enemy = get_closest_enemy()
 	if closest_enemy != null:
-		homing.global_position = closest_enemy.global_position
+		homingR.global_position = closest_enemy.global_position
+		homingL.global_position = closest_enemy.global_position
 	else:
-		homing.position = Vector2(0, -58)
+		homingR.position = Vector2(modR.position.x, -50)
+		homingL.position = Vector2(modL.position.x, -50)
 	super._physics_process(delta)
 
 func focus(boolean):
@@ -99,10 +103,10 @@ func focus(boolean):
 	if is_focus:
 		focus_sprite.show()
 		speed = min_speed
-		modR.position.x = 15
-		modL.position.x = -15
+		modL.position.x = 15
+		modR.position.x = -15
 	else:
 		focus_sprite.hide()
 		speed = max_speed
-		modR.position.x = 30
-		modL.position.x = -30
+		modL.position.x = 30
+		modR.position.x = -30

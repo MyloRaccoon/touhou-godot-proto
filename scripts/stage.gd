@@ -1,34 +1,37 @@
 extends Node2D
+class_name stage
 
-@onready var lbl_power = $ui/lbl_power
-@onready var lbl_player = $ui/lbl_player
-@onready var lbl_score = $ui/lbl_score
-@onready var player = $Reimu
+signal finished
+var is_finished
 
-func get_items():
-	var res = []
-	for child in get_children():
-		if child.is_in_group("item"):
-			res.append(child)
-	return res
+@export var auto_start : bool = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var samples = {}
+
+func start():
+	push_error("Stage " + str(self) + " needs to implements start()")
+
+func set_samples():
+	for sample in get_tree().get_nodes_in_group("stage_sample"):
+		if is_ancestor_of(sample):
+			samples[sample.ID] = sample
+
+func _ready() -> void:
+	set_samples()
+	if auto_start:
+		start()
+
+func check_finished():
+	if !is_finished:
+		for sample in samples:
+			if !samples[sample].is_finished:
+				return false
+	return true
+
+func finish():
+	is_finished = true
+	finished.emit()
+
 func _process(_delta: float) -> void:
-	if player.is_power_max():
-		lbl_power.text = "Power : MAX"
-	else:
-		lbl_power.text = "Power : " + str(player.power) + " /4.0"
-	lbl_score.text = "Score : " + str(player.score)
-	lbl_player.text = "Player : " + str(player.lives)
-
-func instantiate_item(item, item_pos):
-	add_child(item)
-	item.global_position = item_pos
-
-
-func _on_item_swallow_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		for child in get_children():
-			if child.is_in_group("item"):
-				child.player = player
-				child.follow()
+	if check_finished():
+		finish()

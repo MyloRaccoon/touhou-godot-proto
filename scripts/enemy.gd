@@ -20,8 +20,12 @@ signal finished
 @onready var parents = get_follower_path()
 @onready var follower = parents["follower"]
 @onready var path = parents["path"]
-@onready var sprite = get_sprite()
-@onready var collision = get_collision()
+
+var sprite
+var collision
+var visible_notifier
+
+var started : bool
 var bulletPattern 
 var spawnPattern
 var pattern_id = "Enemy pattern: " + str(self) + Global.get_id()
@@ -38,18 +42,27 @@ func get_follower_path():
 	else: push_error("Enemy " + str(self) + " needs a PathFollow2D parent.")
 
 
-func get_sprite():
+func get_sprite_collision_visible():
 	for child in get_children():
 		if child is AnimatedSprite2D:
-			return child
-	push_error("Enemy " + str(self) + " needs a AnimatedSprite2D child.")
+			sprite = child
+		elif child is CollisionShape2D or child is CollisionPolygon2D:
+			collision = child
+		elif child is VisibleOnScreenNotifier2D:
+			visible_notifier = child
+	if sprite == null:
+		push_error("Enemy " + str(self) + " needs a AnimatedSprite2D child.")
+	if collision == null:
+		push_error("Enemy " + str(self) + " needs a CollisionShape2D or CollisionPolygon2D child.")
+	if visible_notifier == null:
+		push_error("Enemy " + str(self) + "needs a VisibleOnScreenNotifier2D child.")
 
-func get_collision():
-	for child in get_children():
-		if child is CollisionShape2D or child is CollisionPolygon2D:
-			return child
-	push_error("Enemy " + str(self) + " needs a CollisionShape2D or CollisionPolygon2D child.")
-
+func set_collision():
+	if visible_notifier.is_on_screen() and started:
+		collision.disabled = false
+	else:
+		collision.disabled = true
+	
 func set_patterns():
 	pattern.bullet = bullet
 	Spawning.new_pattern(pattern_id, pattern)
@@ -68,9 +81,11 @@ func get_spawn_pos():
 	return res
 
 func start():
+	started = true
 	avancing = true
 
 func stop():
+	started = false
 	avancing = false
 	follower.progress_ratio = 0
 	next_spawn_pos = 0
@@ -83,18 +98,19 @@ func replay():
 	start()
 
 func _ready() -> void:
+	get_sprite_collision_visible()
 	follower.loop = false
 	sprite.play()
 	set_patterns()
 	if pooling != 0:
 		Spawning.create_pool(bullet, "enemyBullet", pooling)
-		custom_spawn_point.pool_amount = pooling
+		if custom_spawn_point != null:
+			custom_spawn_point.pool_amount = pooling
 	position = Vector2(0,0)
 	if auto_start:
 		start()
 
 func _process(_delta: float) -> void:
-	print(custom_spawn_point.rotating_speed)
 	if avancing:
 		follower.progress_ratio += (speed/100)
 		if next_spawn_pos != len(spawn_pos):

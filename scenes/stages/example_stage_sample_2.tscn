@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjuxujrjiosd3"]
+
+[ext_resource type="Script" path="res://scripts/stages/example_stage_sample_2.gd" id="1_soqed"]
+[ext_resource type="PackedScene" uid="uid://d1o8dsuq38p6s" path="res://scenes/enemies/circle_metal_head_fairy.tscn" id="2_exypp"]
+
+[sub_resource type="Curve2D" id="Curve2D_0pjo0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -64, 0, 0, 0, 0, 128, 128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_16qxf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 384, -64, 0, 0, 0, 0, 384, 128)
+}
+point_count = 2
+
+[node name="example_stage_sample2" type="Node2D" groups=["stage_sample"]]
+script = ExtResource("1_soqed")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0pjo0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, -64)
+rotates = false
+
+[node name="circleMetalHeadFairy" parent="Path2D/PathFollow2D" instance=ExtResource("2_exypp")]
+ID = "e1"
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_16qxf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(384, -64)
+rotates = false
+
+[node name="circleMetalHeadFairy" parent="Path2D2/PathFollow2D" instance=ExtResource("2_exypp")]
+ID = "e2"
