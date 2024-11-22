@@ -111,6 +111,7 @@ func _ready() -> void:
 		start()
 
 func _process(_delta: float) -> void:
+	set_collision()
 	if avancing:
 		follower.progress_ratio += (speed/100)
 		if next_spawn_pos != len(spawn_pos):

@@ -12,8 +12,9 @@ func get_distance(node : Node2D):
 
 func get_closest_enemy():
 	var enemies = []
-	for child in get_tree().get_nodes_in_group("enemy"):
-		enemies.append(child)
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy.started:
+			enemies.append(enemy)
 	if len(enemies) == 0:
 		return null
 	var dist = get_distance(enemies[0])

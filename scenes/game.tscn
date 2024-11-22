@@ -102,7 +102,6 @@ debug_color = Color(4.81307e-07, 0.650934, 0.0538588, 0.42)
 
 [node name="Reimu" parent="." instance=ExtResource("3_68j3f")]
 position = Vector2(264, 456)
-power = 3.5
 
 [node name="stage1_example" parent="." instance=ExtResource("4_0vgsm")]
 

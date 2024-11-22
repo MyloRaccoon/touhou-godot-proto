@@ -1,0 +1,100 @@
+[gd_resource type="PackedDataContainer" script_class="BulletProps" load_steps=7 format=3 uid="uid://cnpi5f43rnhmv"]
+
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="1_4bdt7"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/BulletProps.gd" id="2_xsf48"]
+
+[sub_resource type="Curve" id="Curve_imeu6"]
+
+[sub_resource type="Resource" id="Resource_wmb7p"]
+script = ExtResource("1_4bdt7")
+ID = ""
+texture = "reimuBasicDispawn"
+collision = "reimuBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
+[sub_resource type="Resource" id="Resource_atcw8"]
+script = ExtResource("1_4bdt7")
+ID = ""
+texture = "reimuBasic"
+collision = "reimuBasic"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
+[sub_resource type="Curve" id="Curve_8q7qs"]
+
+[resource]
+script = ExtResource("2_xsf48")
+anim_idle = SubResource("Resource_atcw8")
+anim_delete = SubResource("Resource_wmb7p")
+anim_more = Array[ExtResource("1_4bdt7")]([])
+damage = 2.0
+speed = 1500.0
+scale = 1.0
+angle = -1.5696
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 0.196078)
+spec_rotating_speed = 0.0
+death_after_time = 0.5
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_imeu6")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_8q7qs")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
