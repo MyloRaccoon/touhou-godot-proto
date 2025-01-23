@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3mnriwui3awh"]
+[gd_scene load_steps=10 format=3 uid="uid://c3mnriwui3awh"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jdqv7"]
+[ext_resource type="Script" path="res://scripts/flashbang.gd" id="2_1fpmm"]
 [ext_resource type="Texture2D" uid="uid://e15ob435uk30" path="res://assets/PC Computer - Touhou Chireiden Subterranean Animism - Spell Cards.png" id="2_tgkek"]
 [ext_resource type="PackedScene" uid="uid://bvf2n26nfqy8t" path="res://scenes/reimu.tscn" id="3_68j3f"]
 [ext_resource type="PackedScene" uid="uid://bddloyychq4bx" path="res://scenes/stages/stage1_example.tscn" id="4_0vgsm"]
@@ -49,6 +50,12 @@ offset_top = 128.0
 offset_right = 623.0
 offset_bottom = 151.0
 text = "Power : 1/4"
+
+[node name="flashbang" type="ColorRect" parent="ui"]
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_1fpmm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(392, 255)

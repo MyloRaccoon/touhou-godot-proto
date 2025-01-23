@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://21lph52yqqv8"]
+
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_ajgos"]
+[ext_resource type="Script" path="res://scripts/spell_card.gd" id="2_3q8ki"]
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_x2who"]
+script = ExtResource("2_3q8ki")
+positions = Array[Vector2]([Vector2(320, 128), Vector2(576, 128), Vector2(192, 286)])
+loop = true
+waiting_time = 1.0
+speed = 500.0
+once_patterns = Array[NodePath]([])
+constant_patterns = Array[NodePath]([])
+spawn_positions = Array[Vector2]([])
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ymklg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28qam"]
+size = Vector2(32, 32)
+
+[node name="boss" type="CharacterBody2D"]
+collision_layer = 258
+collision_mask = 258
+script = ExtResource("1_ajgos")
+spell_card = SubResource("PackedDataContainer_x2who")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(32, 32)
+texture = SubResource("PlaceholderTexture2D_ymklg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_28qam")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(192, 256)

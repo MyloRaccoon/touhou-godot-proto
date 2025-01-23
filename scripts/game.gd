@@ -5,6 +5,9 @@ extends Node2D
 @onready var lbl_score = $ui/lbl_score
 @onready var player = $Reimu
 
+func flashbang():
+	$ui/flashbang.fading_in()
+
 func get_items():
 	var res = []
 	for child in get_children():

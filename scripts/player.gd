@@ -78,6 +78,7 @@ func _input(event: InputEvent) -> void:
 		focus(false)
 
 func touched():
+	get_parent().flashbang()
 	invisibility = true
 	Spawning.clear_all_bullets()
 	position = Vector2(256, 448)
